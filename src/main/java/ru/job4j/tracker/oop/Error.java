@@ -2,9 +2,9 @@ package ru.job4j.tracker.oop;
 
 public class Error {
 
-    private static boolean active;
-    private static int status;
-    private static String message;
+    private boolean active;
+    private int status;
+    private String message;
 
     public Error() {
     }
@@ -20,7 +20,7 @@ public class Error {
         error.printInfo();
     }
 
-    public static void printInfo() {
+    public void printInfo() {
         System.out.println("Активный: " + active);
         System.out.println("Статус: " + status);
         System.out.println("Сообщение: " + message);
