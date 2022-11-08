@@ -15,7 +15,7 @@ public class PointTest {
     }
 
     @Test
-    public void when14to28then4dot12() {
+    public void when14to28then12dot04() {
         double expected = 12.04;
         Point a = new Point(1, 4);
         Point b = new Point(2, 8);
@@ -24,7 +24,7 @@ public class PointTest {
     }
 
     @Test
-    public void when35to68then4dot13() {
+    public void when35to68then13dot34() {
         double expected = 13.34;
         Point a = new Point(3, 5);
         Point b = new Point(6, 8);
