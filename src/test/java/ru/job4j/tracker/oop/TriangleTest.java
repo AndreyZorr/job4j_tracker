@@ -12,16 +12,16 @@ public class TriangleTest {
         Point c = new Point(0, 4);
         Triangle triangle = new Triangle(a, b, c);
         double rsl = triangle.area();
-        assertThat(rsl).isCloseTo(8, offset(0.001));
+        assertThat(rsl).isCloseTo(8, offset(0.1));
     }
 
     @Test
-    public void when00and00and00ThenMinus1() {
-        Point a = new Point(0, 0);
-        Point b = new Point(0, 0);
-        Point c = new Point(0, 0);
+    public void when95and77and21Then11() {
+        Point a = new Point(9, 5);
+        Point b = new Point(7, 7);
+        Point c = new Point(2, 1);
         Triangle triangle = new Triangle(a, b, c);
         double rsl = triangle.area();
-        assertThat(rsl).isCloseTo(-1, offset(0.001));
+        assertThat(rsl).isCloseTo(11, offset(0.1));
     }
 }
