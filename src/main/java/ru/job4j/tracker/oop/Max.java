@@ -6,12 +6,11 @@ public class Max {
         return left > right ? left : right;
     }
 
-    public int max(int left, int right, int first) {
-        return max(left, max(right, first));
+    public int max(int left, int right, int top) {
+        return max(left, max(right, top));
     }
 
-    public int max(int left, int right, int first, int second) {
-        int tmp = max(right, first, second);
-        return max(left, tmp);
+    public int max(int left, int right, int top, int bottom) {
+        return max(left, max(right, top, bottom));
     }
 }
