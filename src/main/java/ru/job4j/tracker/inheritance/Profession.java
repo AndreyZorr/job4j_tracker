@@ -7,3 +7,4 @@ public class Profession {
         this.degree = degree;
     }
 }
+
