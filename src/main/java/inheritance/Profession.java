@@ -1,4 +1,4 @@
-package ru.job4j.tracker.inheritance;
+package inheritance;
 
 public class Profession {
     private boolean degree;
