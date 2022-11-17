@@ -10,5 +10,3 @@ public class PizzaShop {
         System.out.println(pizzaExtraCheeseExtraTomato.name());
     }
 }
-
-
