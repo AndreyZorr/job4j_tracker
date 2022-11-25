@@ -59,9 +59,8 @@ public class Tracker {
         if (result) {
             items[index] = item;
             item.setId(id);
-            return true;
         }
-        return false;
+        return result;
     }
 
     public boolean delete(int id) {
@@ -71,9 +70,8 @@ public class Tracker {
             System.arraycopy(items, index + 1, items, index, size - index - 1);
             items[size - 1] = null;
             size--;
-            return true;
         }
-        return false;
+        return result;
     }
 }
 
