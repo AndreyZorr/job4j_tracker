@@ -13,7 +13,8 @@ public class CreateAction implements UserAction {
         Item item = new Item(name);
         tracker.add(item);
         System.out.println("Добавленная заявка: " + item);
-        return false;
+        return true;
     }
 }
+
 
