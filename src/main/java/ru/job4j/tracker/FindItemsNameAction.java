@@ -1,6 +1,13 @@
 package ru.job4j.tracker;
 
 public class FindItemsNameAction implements UserAction {
+
+    private final Output out;
+
+    public FindItemsNameAction(Output out) {
+        this.out = out;
+    }
+
     @Override
     public String name() {
         return "Enter name";
