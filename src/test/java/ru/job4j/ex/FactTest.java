@@ -15,4 +15,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
                 });
         assertThat(exception.getMessage()).isEqualTo("N could not be less then 0");
     }
+
+    @Test
+     public void when1Then10() {
+        int n = 7;
+        int expected = 5040;
+        int result = Fact.calc(n);
+        assertThat(result).isEqualTo(expected);
+    }
+
 }
