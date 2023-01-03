@@ -1,6 +1,10 @@
 package ru.job4j.early;
+
 public class PasswordValidator {
     public static String validate(String password) {
+        boolean checkDigit = false;
+        boolean checkSymbol = false;
+
         if (password == null) {
             throw new IllegalArgumentException("Password can't be null");
         }
@@ -13,11 +17,23 @@ public class PasswordValidator {
         if (password.equals(password.toLowerCase())) {
             throw new IllegalArgumentException("Password should contain at least one uppercase letter");
         }
-        if (!checkDigit(password)) {
+        for (int i = 0; i < password.length(); i++) {
+            if (Character.isDigit(password.charAt(i))) {
+                checkDigit = true;
+                break;
+            }
+        }
+        if (!checkDigit) {
             throw new IllegalArgumentException("Password should contain at least one figure");
         }
-        if (!checkSymbols(password)) {
-            throw new IllegalArgumentException("Password should contain at least one special symbol");
+        for (int i = 0; i < password.length(); i++) {
+            if (!Character.isLetterOrDigit(password.charAt(i))) {
+                checkSymbol = true;
+                break;
+            }
+        }
+        if (!checkSymbol) {
+                throw new IllegalArgumentException("Password should contain at least one special symbol");
         }
         if (checkSubstring(password)) {
             throw new IllegalArgumentException("Password shouldn't contain substrings: qwerty, 12345, password, admin, user");
@@ -32,24 +48,5 @@ public class PasswordValidator {
                 return true;
             }
         } return false;
-    }
-
-    public static boolean checkSymbols(String password) {
-        for (int i = 0; i < password.length(); i++) {
-            int code = password.codePointAt(i);
-            if (code >= 33 && code <= 47) {
-                return true;
-            }
-        } return false;
-    }
-
-    public static boolean checkDigit(String password) {
-        char[] chars = password.toCharArray();
-        for (char c : chars) {
-            if (Character.isDigit(c)) {
-                return true;
-            }
-        }
-        return false;
     }
 }
