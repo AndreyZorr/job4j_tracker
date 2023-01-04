@@ -145,3 +145,4 @@ class PasswordValidatorTest {
         assertThat(exception.getMessage()).isEqualTo(expected);
     }
 }
+
