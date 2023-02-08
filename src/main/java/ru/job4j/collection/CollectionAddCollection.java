@@ -9,7 +9,7 @@ public class CollectionAddCollection {
         collection.add("one");
         collection.add("two");
         collection.add("three");
-        Collection<String> list = new ArrayList<>(); //добавил коллекцию в другую коллекцию
+        Collection<String> list = new ArrayList<>();
         list.addAll(collection);
         for (String str : list) {
             System.out.println(str);
