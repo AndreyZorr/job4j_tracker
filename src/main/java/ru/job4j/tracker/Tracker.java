@@ -6,7 +6,6 @@ import java.util.List;
 public class Tracker {
     private final List<Item> items = new ArrayList<>();
     private int ids = 1;
-    private int size = 0;
 
     private int indexOf(int id) {
         int rsl = -1;
@@ -35,13 +34,13 @@ public class Tracker {
     }
 
     public List<Item> findByName(String key) {
-        List<Item> items1 = new ArrayList<>();
+        List<Item> result = new ArrayList<>();
         for (Item item : items) {
             if (key.equals(item.getName())) {
-                items1.add(item);
+                result.add(item);
             }
         }
-        return items1;
+        return result;
     }
 
     public boolean replace(int id, Item item) {
