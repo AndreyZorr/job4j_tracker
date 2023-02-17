@@ -9,6 +9,6 @@ public class FullSearch {
         for (Task ta : list) {
             numbers.add(ta.getNumber());
         }
-            return numbers;
+        return numbers;
     }
 }
