@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class UsageMap {
     public static void main(String[] args) {
         HashMap<String, String> map = new HashMap<>();
+        map.put("alpatoV_a_a@mail.ru", "Alpatov Andrey Anatolvech");
         map.put("sergo@gmail.com", "Kuzmin Sergei Pavlovich");
         map.put("alpatoV_a_a@mail.ru", "Alpatov Andrey Anatolvech");
         map.put("peran@@yandex.ru", "Semin Pavel Ivanovich");
