@@ -23,3 +23,4 @@ public class LexSortTest {
         assertThat(input).containsExactly(out);
     }
 }
+
