@@ -22,5 +22,4 @@ public class FI {
             System.out.println(string);
         }
     }
-
 }
