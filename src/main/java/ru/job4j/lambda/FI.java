@@ -16,7 +16,7 @@ public class FI {
             System.out.println(string);
         }
         System.out.println();
-        Comparator<String> cmpDescSize = (left, right) -> Integer.compare(left.length(), right.length());
+        Comparator<String> cmpDescSize = (left, right) -> Integer.compare(right.length(), left.length());
                 Arrays.sort(st, cmpDescSize);
         for (String string : st) {
             System.out.println(string);
