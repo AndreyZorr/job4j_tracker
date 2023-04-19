@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Profiles {
 
@@ -15,7 +16,7 @@ public class Profiles {
 
     public static List<Address> collectSortWithoutDuplicate(List<Profile> profiles) {
         return profiles.stream()
-                .map(profile -> profile.getAddress())
+                .map(Profile::getAddress)
                 .sorted(Comparator.comparing(Address::getCity))
                 .distinct()
                 .collect(Collectors.toList());
