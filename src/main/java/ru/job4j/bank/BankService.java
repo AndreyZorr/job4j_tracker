@@ -54,16 +54,12 @@ public class BankService {
      * @param passport паспорт пользователя.
      * @return возвращает пользователя, если ничего не найдено, вернет null.
      */
-
     public User findByPassport(String passport) {
-        User rsl = null;
-        for (User user : users.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                rsl = user;
-                break;
-            }
-        }
-        return rsl;
+        return users.keySet()
+                .stream()
+                .filter(p -> p.getPassport().equals(passport))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
@@ -73,19 +69,17 @@ public class BankService {
      * @return возвращает нужный счет.
      */
 
-    public Account findByRequisite(String passport, String requisite) {
-        Account rsl = null;
-        User user = findByPassport(passport);
-        if (user != null) {
-            for (Account account : users.get(user)) {
-                if (account.getRequisite().equals(requisite)) {
-                    rsl = account;
-                    break;
-                }
-            }
-        }
-        return rsl;
-    }
+  public Account findByRequisite(String passport, String requisite) {
+      User user = findByPassport(passport);
+      if (user != null) {
+          return getAccounts(user)
+                  .stream()
+                  .filter(p -> p.getRequisite().equals(requisite))
+                  .findFirst()
+                  .orElse(null);
+      }
+      return null;
+  }
 
     /**
      * Метод перечисляет деньги с одного счета на другой.
