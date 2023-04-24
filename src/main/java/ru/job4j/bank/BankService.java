@@ -7,6 +7,7 @@ import java.util.Map;
 
 /**
  * Класс реализует банковскую систему.
+ *
  * @author Andrey Alpatov.
  * @version 1.0
  */
@@ -19,6 +20,7 @@ public class BankService {
 
     /**
      * Метод добавляет пользователя в систему, если его нет в системе.
+     *
      * @param user пользователь которого нужно добавить в систему
      */
 
@@ -28,6 +30,7 @@ public class BankService {
 
     /**
      * Медод удаляет пользователя из системы.
+     *
      * @param passport сравнение по полю.
      * @return список пользователей без удаленого.
      */
@@ -38,8 +41,9 @@ public class BankService {
 
     /**
      * Метод добавляет счет к пользователю.
+     *
      * @param passport поиск пользователя по паспорту.
-     * @param account получим список всех счетовпользователя и добавим новый счет.
+     * @param account  получим список всех счетовпользователя и добавим новый счет.
      */
 
     public void addAccount(String passport, Account account) {
@@ -51,6 +55,7 @@ public class BankService {
 
     /**
      * Метод ищет пользователя по паспорту.
+     *
      * @param passport паспорт пользователя.
      * @return возвращает пользователя, если ничего не найдено, вернет null.
      */
@@ -64,30 +69,32 @@ public class BankService {
 
     /**
      * Метод ищет счет пользователя по реквизитам, с помощью метода findByPassport.
-     * @param passport ищет пользователя по паспорту.
+     *
+     * @param passport  ищет пользователя по паспорту.
      * @param requisite получает список счетов этого пользователя и в нем находит нужный счет.
      * @return возвращает нужный счет.
      */
 
-  public Account findByRequisite(String passport, String requisite) {
-      User user = findByPassport(passport);
-      if (user != null) {
-          return getAccounts(user)
-                  .stream()
-                  .filter(p -> p.getRequisite().equals(requisite))
-                  .findFirst()
-                  .orElse(null);
-      }
-      return null;
-  }
+    public Account findByRequisite(String passport, String requisite) {
+        User user = findByPassport(passport);
+        if (user != null) {
+            return getAccounts(user)
+                    .stream()
+                    .filter(p -> p.getRequisite().equals(requisite))
+                    .findFirst()
+                    .orElse(null);
+        }
+        return null;
+    }
 
     /**
      * Метод перечисляет деньги с одного счета на другой.
-     * @param srcPassport паспорт пользователя списания
-     * @param srcRequisite реквизиты пользователя списания
-     * @param destPassport паспорт пользователя зачисления
+     *
+     * @param srcPassport   паспорт пользователя списания
+     * @param srcRequisite  реквизиты пользователя списания
+     * @param destPassport  паспорт пользователя зачисления
      * @param destRequisite реквизиты пользователя зачисления
-     * @param amount сумма для перевода
+     * @param amount        сумма для перевода
      * @return возвращает true если деньги переведены и false если счет не найден или не хватает денег.
      */
 
@@ -106,6 +113,7 @@ public class BankService {
 
     /**
      * Метод получает доступ к списку счетов пользователя
+     *
      * @param user принимает карточку пользователя
      * @return возвращает счета ползователя
      */
