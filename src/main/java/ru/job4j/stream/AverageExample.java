@@ -14,9 +14,9 @@ public class AverageExample {
                 new Person("Анна", 29)
         );
         OptionalDouble average = people.stream()
-                .mapToInt(Person::getAge) //поток объектов Person преобразовывается в поток int
-                .average(); //возвращает среднее арифметическое всех элементов потока
-        double avg = average.getAsDouble(); //Метод average() возвращает OptionalDouble, из которого мы получаем значение
+                .mapToInt(Person::getAge)
+                .average();
+        double avg = average.getAsDouble();
         System.out.println(avg);
     }
 }

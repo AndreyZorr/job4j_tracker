@@ -17,8 +17,8 @@ public class MinExampleMain {
                 new Person("Анна", 29)
         );
         Optional<Person> youngestPerson = people.stream()
-                .min(Comparator.comparing(Person::getAge)); //передаем в метод min() компаратор, который задает принцип поиска по значению поля age
-        int age = youngestPerson.get().getAge(); //Метод min() возвращает значение типа Optional, поэтому в следующей строке мы получаем объект Person из обертки Optional и далее получаем его возраст
-        System.out.println(age); //
+                .min(Comparator.comparing(Person::getAge));
+        int age = youngestPerson.get().getAge();
+        System.out.println(age);
     }
 }

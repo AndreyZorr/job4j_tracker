@@ -13,7 +13,7 @@ public class SumExample {
                 new Person("Антон", 20),
                 new Person("Виктор", 16),
                 new Person("Анна", 29)
-        ); //поток объектов Person преобразуется в поток int с последующим подсчетом суммы возрастов всех людей в листе
+        );
         int sum = people.stream()
                 .mapToInt(Person::getAge)
                 .sum();
