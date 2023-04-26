@@ -6,8 +6,8 @@ import java.util.stream.IntStream;
 
 public class MapToObjExample {
     public static void main(String[] args) {
-        List<String> list = IntStream.rangeClosed(1, 5) //создается поток из примитивных чисел int от 1 до 5 включительно
-                .mapToObj(String::valueOf) // метод mapToObj() преобразует все элементы потока примитивного тип int в строки типа String
+        List<String> list = IntStream.rangeClosed(1, 5)
+                .mapToObj(String::valueOf)
                 .collect(Collectors.toList()); //
         System.out.println(list);
     }

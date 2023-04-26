@@ -14,9 +14,9 @@ public class MapToIntExample {
         );
         int sum = people.stream()
                 .filter(e -> e.getAge() > 18)
-                .mapToInt(Person::getAge) //метод flatMapToInt() преобразует каждый элемент потока (массив) в поток примитивных чисел int
+                .mapToInt(Person::getAge)
                 .peek(System.out::println)
-                .sum(); //суммируем элементы полученного числового потока
+                .sum();
         System.out.println("Сумма: " + sum);
     }
 }
