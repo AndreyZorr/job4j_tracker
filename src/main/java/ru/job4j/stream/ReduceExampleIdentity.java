@@ -11,9 +11,3 @@ public class ReduceExampleIdentity {
         System.out.println(sum);
     }
 }
-// Последовательность операций:
-// 2(identity) + 1 = 3
-//3 + 2 = 5
-//5 + 3 = 8
-//8 + 4 = 12
-//Вывод: 12;

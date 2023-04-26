@@ -7,7 +7,7 @@ public class ReduceExample {
     public static void main(String[] args) {
         List<Integer> nums = List.of(1, 2, 3, 4);
         Optional<Integer> sum = nums.stream()
-                .reduce((a, b) -> a + b); //передаем BinaryOperator в метод reduce()
+                .reduce((a, b) -> a + b);
         System.out.println(sum.get());
     }
 }

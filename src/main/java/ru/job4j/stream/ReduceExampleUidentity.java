@@ -1,6 +1,7 @@
 package ru.job4j.stream;
 
 import ru.job4j.stream.mapto.Person;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,17 +16,15 @@ public class ReduceExampleUidentity {
         );
         int sum = people.stream()
                 .reduce(
-                        0, // задаем первый параметр метода reduce() - identity, равный 0, так как суммировать будем с нуля
-                        (a, b) -> { // этом шаге будет создан новый поток
-                            if (b.getAge() > 25) { // // с отобранными по условию числами 35, 26 и 29
+                        0,
+                        (a, b) -> {
+                            if (b.getAge() > 25) {
                                 return a + b.getAge();
                             } else {
                                 return a;
                             }
                         },
-                        (a, b) -> a + b //выполняем бинарную операцию
-                        // по суммированию всех элементов.
-                        // На этом шаге складываются числа из предыдущего шага:
+                        (a, b) -> a + b
                 );
         System.out.println(sum);
     }
