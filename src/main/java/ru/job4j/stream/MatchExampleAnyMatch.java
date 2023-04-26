@@ -8,8 +8,7 @@ public class MatchExampleAnyMatch {
         List<String> strings = Arrays.asList("Один", "Два", "Три", "Четыре", "Пять");
         boolean rsl = strings
                 .stream()
-                .anyMatch(e -> e.endsWith("ь")); //проверка, что хотя бы одно значение потока
-        // оканчивается на мягкий знак
+                .anyMatch(e -> e.endsWith("ь"));
         System.out.println(rsl);
     }
 }

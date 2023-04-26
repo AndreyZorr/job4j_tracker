@@ -8,8 +8,7 @@ public class MatchExample {
         List<String> strings = Arrays.asList("Один", "Два", "Три", "Четыре", "Пять");
         boolean rsl = strings
                 .stream()
-                .noneMatch("Шесть"::contains); // производится проверка, что значение "Шесть" отсутствует
-        // в листе
+                .noneMatch("Шесть"::contains);
         System.out.println(rsl);
     }
 }

@@ -8,8 +8,7 @@ public class MatchExampleAllMatch {
         List<String> strings = Arrays.asList("Трижды", "Три", "Триста", "Три тысячи");
         boolean rsl = strings
                 .stream()
-                .allMatch(e -> e.startsWith("Три")); //производится проверка, что все элементы потока
-        // начинаются с "Три"
+                .allMatch(e -> e.startsWith("Три"));
         System.out.println(rsl);
     }
 }
