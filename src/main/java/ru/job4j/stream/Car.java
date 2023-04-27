@@ -59,13 +59,13 @@ public class Car {
         }
 
         Car build() {
-           Car car = new Car();
-           car.brand = brand;
-           car.model = model;
-           car.created = created;
-           car.volume = volume;
-           car.color = color;
-           return car;
+            Car car = new Car();
+            car.brand = brand;
+            car.model = model;
+            car.created = created;
+            car.volume = volume;
+            car.color = color;
+            return car;
         }
     }
 
