@@ -14,24 +14,24 @@ public class Car {
 
     private String color;
 
+    @Override
+    public String toString() {
+        return "Car{"
+                + "brand='" + brand + '\''
+                + ", model='" + model + '\''
+                + ", created=" + created
+                + ", volume=" + volume
+                + ", color='" + color
+                + '\''
+                + '}';
+    }
+
     static class Builder {
         private String brand;
         private String model;
         private LocalDate created;
         private double volume;
         private String color;
-
-        @Override
-        public String toString() {
-            return "Car{"
-                    + "brand='" + brand + '\''
-                    + ", model='" + model + '\''
-                    + ", created=" + created
-                    + ", volume=" + volume
-                    + ", color='" + color
-                    + '\''
-                    + '}';
-        }
 
         Builder buildBrand(String brand) {
             this.brand = brand;
