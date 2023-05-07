@@ -52,7 +52,7 @@ public class Analyze {
         return stream
                 .map(Pupil::subjects)
                 .flatMap(Collection::stream)
-                .collect(Collectors.groupingBy(Subject::name, LinkedHashMap::new, Collectors.averagingDouble(Subject::score)))
+                .collect(Collectors.groupingBy(Subject::name, Collectors.averagingDouble(Subject::score)))
                 .entrySet().stream()
                 .map(stringDoubleEntry -> new Tuple(stringDoubleEntry.getKey(), stringDoubleEntry.getValue()))
                 .max(Comparator.comparing(Tuple::score))
