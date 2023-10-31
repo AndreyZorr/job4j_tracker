@@ -1,7 +1,7 @@
 package ru.job4j.tracker;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class ValidateInputTest {
 
@@ -13,7 +13,7 @@ public class ValidateInputTest {
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
-        assertThat(selected).isEqualTo(1);
+        Assertions.assertThat(selected).isEqualTo(1);
     }
 
     @Test
@@ -24,7 +24,7 @@ public class ValidateInputTest {
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
-        assertThat(selected).isEqualTo(2);
+        Assertions.assertThat(selected).isEqualTo(2);
     }
 
     @Test
@@ -35,9 +35,9 @@ public class ValidateInputTest {
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
-        assertThat(selected).isEqualTo(2);
+        Assertions.assertThat(selected).isEqualTo(2);
         int selecteds = input.askInt("Enter menu:");
-        assertThat(selecteds).isEqualTo(3);
+        Assertions.assertThat(selecteds).isEqualTo(3);
     }
 
     @Test
@@ -48,6 +48,6 @@ public class ValidateInputTest {
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
-        assertThat(selected).isEqualTo(-1);
+        Assertions.assertThat(selected).isEqualTo(-1);
     }
 }
