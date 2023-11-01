@@ -90,9 +90,8 @@ public class TrackerTest {
         Store store = new MemTracker();
         Item item = new Item("Bug");
         store.add(item);
-        boolean result = store.delete(1000);
+        store.delete(1000);
         Assertions.assertThat(store.findById(item.getId()).getName()).isEqualTo("Bug");
-        Assertions.assertThat(result).isFalse();
     }
 }
 
