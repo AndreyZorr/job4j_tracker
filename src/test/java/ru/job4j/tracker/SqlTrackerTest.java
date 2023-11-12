@@ -66,6 +66,7 @@ public class SqlTrackerTest {
         tracker.add(item1);
         tracker.add(item2);
         tracker.add(item3);
+        tracker.delete(1);
         List<Item> items = List.of(item1, item2, item3);
         assertThat(tracker.findAll()).isEqualTo(items);
     }
