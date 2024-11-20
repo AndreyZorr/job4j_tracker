@@ -9,6 +9,7 @@
     <version>1.0</version>
     <packaging>jar</packaging>
     <properties>
+
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,7 +19,7 @@
         <profile>
             <id>test</id>
             <properties>
-                <liquibase.config>src/main/resources/db/liquibase_test.properties</liquibase.config>
+                <liquibase.config>db/liquibase_test.properties</liquibase.config>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -27,7 +28,7 @@
         <profile>
             <id>production</id>
             <properties>
-                <liquibase.config>src/main/resources/db/liquibase.properties</liquibase.config>
+                <liquibase.config>db/liquibase.properties</liquibase.config>
             </properties>
         </profile>
     </profiles>
@@ -53,7 +54,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.6.0</version>
+            <version>42.2.12</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -90,6 +91,11 @@
             <artifactId>lombok</artifactId>
             <version>1.18.30</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.6.11.Final</version>
         </dependency>
     </dependencies>
     <build>
