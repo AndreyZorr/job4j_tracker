@@ -32,19 +32,20 @@ public class HbmTracker implements Store, AutoCloseable {
     @Override
     public boolean replace(int id, Item item) {
         var session = sf.openSession();
+        var result = false;
         try {
             session.beginTransaction();
-            session.createQuery(
+            result = session.createQuery(
                     "REPLACE Item WHERE id = fId")
                     .setParameter("fId", id)
-                    .executeUpdate();
+                    .executeUpdate() > 0;
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
         } finally {
             session.close();
         }
-        return false;
+        return result;
     }
 
     @Override
@@ -86,10 +87,10 @@ public class HbmTracker implements Store, AutoCloseable {
         List<Item> items = new ArrayList<>();
         var session = sf.openSession();
         try {
-            session.getTransaction();
-            var query = session.createQuery("FROM Item as i WHERE i.name = :fName")
-                    .setParameter("fName", key).getResultList();
-            items.add((Item) query);
+            session.beginTransaction();
+            items = session.createQuery("FROM Item as i WHERE i.name = :fName", Item.class)
+                    .setParameter("fName", key)
+                    .getResultList();
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
@@ -101,10 +102,11 @@ public class HbmTracker implements Store, AutoCloseable {
 
     @Override
     public Item findById(int id) {
+        Item item = null;
         var session = sf.openSession();
         try {
             session.beginTransaction();
-            session.createQuery(
+            item = session.createQuery(
                     "FROM Item as i WHERE i.id = :fId", Item.class)
                     .setParameter(":fId", id).uniqueResult();
             session.getTransaction().commit();
@@ -113,7 +115,7 @@ public class HbmTracker implements Store, AutoCloseable {
         } finally {
             session.close();
         }
-        return null;
+        return item;
     }
 
     @Override
