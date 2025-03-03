@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -54,7 +55,7 @@ public class SqlTrackerTest {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = new Item("item");
         tracker.add(item);
-        assertThat(tracker.findById(item.getId())).isEqualTo(item);
+        Assertions.assertThat(tracker.findById(item.getId())).isEqualTo(item);
     }
 
     @Test
