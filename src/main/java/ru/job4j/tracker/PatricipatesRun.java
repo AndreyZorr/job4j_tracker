@@ -1,3 +1,4 @@
+/*
 package ru.job4j.tracker;
 
 import org.hibernate.Session;
@@ -92,3 +93,4 @@ public class PatricipatesRun {
         return result;
     }
 }
+*/

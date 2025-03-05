@@ -60,6 +60,10 @@ public class MemTracker implements Store {
         }
     }
 
+    public void deleteAll() {
+            items.clear();
+        }
+
     public void close() throws Exception {
     }
 }
