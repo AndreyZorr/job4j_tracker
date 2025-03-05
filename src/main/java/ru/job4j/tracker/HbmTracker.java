@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -16,7 +17,7 @@ public class HbmTracker implements Store, AutoCloseable {
 
     @Override
     public Item add(Item item) {
-        var session = sf.openSession();
+        Session session = sf.openSession();
         try {
             session.beginTransaction();
             session.save(item);
@@ -31,14 +32,16 @@ public class HbmTracker implements Store, AutoCloseable {
 
     @Override
     public boolean replace(int id, Item item) {
-        var session = sf.openSession();
-        var result = false;
+        Session session = sf.openSession();
+        boolean result = false;
         try {
             session.beginTransaction();
-            result = session.createQuery(
-                    "REPLACE Item WHERE id = fId")
-                    .setParameter("fId", id)
-                    .executeUpdate() > 0;
+            Item existingItem = session.get(Item.class, id);
+            if (existingItem != null) {
+                existingItem.setName(item.getName());
+                session.update(existingItem);
+                result = true;
+            }
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
@@ -50,11 +53,10 @@ public class HbmTracker implements Store, AutoCloseable {
 
     @Override
     public void delete(int id) {
-        var session = sf.openSession();
+        Session session = sf.openSession();
         try {
             session.beginTransaction();
-            session.createQuery(
-                    "DELETE Item WHERE id = fId")
+            session.createQuery("DELETE Item WHERE id = :fId")
                     .setParameter("fId", id)
                     .executeUpdate();
             session.getTransaction().commit();
@@ -67,12 +69,12 @@ public class HbmTracker implements Store, AutoCloseable {
 
     @Override
     public List<Item> findAll() {
+        Session session = sf.openSession();
         List<Item> items = new ArrayList<>();
-        var session = sf.openSession();
         try {
             session.beginTransaction();
-            items = session.createQuery(
-                    "FROM Item", Item.class).list();
+            items = session.createQuery("FROM Item", Item.class)
+                    .list();
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
@@ -84,13 +86,13 @@ public class HbmTracker implements Store, AutoCloseable {
 
     @Override
     public List<Item> findByName(String key) {
+        Session session = sf.openSession();
         List<Item> items = new ArrayList<>();
-        var session = sf.openSession();
         try {
             session.beginTransaction();
-            items = session.createQuery("FROM Item as i WHERE i.name = :fName", Item.class)
+            items = session.createQuery("FROM Item WHERE name = :fName", Item.class)
                     .setParameter("fName", key)
-                    .getResultList();
+                    .list();
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
@@ -102,13 +104,13 @@ public class HbmTracker implements Store, AutoCloseable {
 
     @Override
     public Item findById(int id) {
+        Session session = sf.openSession();
         Item item = null;
-        var session = sf.openSession();
         try {
             session.beginTransaction();
-            item = session.createQuery(
-                    "FROM Item as i WHERE i.id = :fId", Item.class)
-                    .setParameter(":fId", id).uniqueResult();
+            item = session.createQuery("FROM Item WHERE id = :fId", Item.class)
+                    .setParameter("fId", id)
+                    .uniqueResult();
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
