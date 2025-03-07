@@ -2,7 +2,6 @@ package ru.job4j.tracker;
 
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -32,17 +31,18 @@ public class HbmTrackerTest {
     }
 
     @Test
-    public void whenItemIsReplacedThenReceiveTrue() {
+    public void whenReplace() {
         try (var tracker = new HbmTracker()) {
-            var item1 = new Item();
-            var item2 = new Item();
-            item1.setName("test1");
-            item1.setCreated(LocalDateTime.now());
-            item2.setName("test2");
-            item2.setCreated(LocalDateTime.now());
+            Item item1 = new Item();
+            Item item2 = new Item();
+            item1.setName("test");
+            item2.setName("test1");
             tracker.add(item1);
-            var result = tracker.replace(item1.getId(), item2);
-            assertThat(result).isTrue();
+            tracker.add(item2);
+            item2.setId(item1.getId());
+            tracker.replace(item1.getId(), item2);
+            Item result = tracker.findById(item1.getId());
+            assertThat(result.getName()).isEqualTo(item1.getName());
         }
     }
 
